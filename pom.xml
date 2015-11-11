@@ -1,15 +1,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>nt.evn.com</groupId>
-    <artifactId>RewardManagement</artifactId>
+    <groupId>nt.ngc.com</groupId>
+    <artifactId>ngc</artifactId>
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>EVN Reward Management Webapp</name>
+    <name>NGC Webapp</name>
 
     <properties>
         <spring.version>4.0.9.RELEASE</spring.version>
         <spring.jpa.version>1.7.2.RELEASE</spring.jpa.version>
+        <ngc.environment.location>${basedir}/environment/localhost</ngc.environment.location>
     </properties>
 
     <dependencies>
@@ -90,6 +91,16 @@
             <artifactId>commons-io</artifactId>
             <version>1.3.2</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-rs-extension-providers</artifactId>
+            <version>3.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-rs-service-description</artifactId>
+            <version>3.0.2</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -108,9 +119,12 @@
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <version>2.0</version>
                 <configuration>
-                    <path>/reward</path>
+                    <path>/ngc</path>
                     <port>8086</port>
                     <!-- other config options here -->
+                    <additionalClassesDirs>
+                        <classesDir>${ngc.environment.location}</classesDir>
+                    </additionalClassesDirs>
                 </configuration>
             </plugin>
         </plugins>

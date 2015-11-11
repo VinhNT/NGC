@@ -1,9 +1,9 @@
-package nt.evn.com.filter;
+package nt.ngc.com.filter;
 
 import org.sitemesh.builder.SiteMeshFilterBuilder;
 import org.sitemesh.config.ConfigurableSiteMeshFilter;
 
-public class MySitemeshFilter extends ConfigurableSiteMeshFilter {
+public class NgcSitemeshFilter extends ConfigurableSiteMeshFilter {
 
     @Override
     protected void applyCustomConfiguration(SiteMeshFilterBuilder builder) {
