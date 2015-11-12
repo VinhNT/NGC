@@ -9,3 +9,20 @@ function reloadTable(table, aaData) {
     oSettings.aiDisplay = oSettings.aiDisplayMaster.slice();
     table.fnDraw();
 }
+
+function initUploadFile(inputSelector) {
+    $(inputSelector).fileupload({
+            dataType : 'json',
+            done : function(e, data) {
+                alert('Done');
+            },
+            progressall : function(e, data) {
+                var progress = parseInt(data.loaded / data.total * 100, 10);
+                console.log(progress)
+            }
+        });
+}
+
+function initCKEditor(inputName) {
+    CKEDITOR.replace(inputName);
+}

@@ -4,4 +4,8 @@ var NgcJs = function() {
     this.employeeRewardTable = null;
 }
 
+NgcJs.prototype.setContextUrl = function(urlContext) {
+    this.urlContext = urlContext;
+}
+
 var ngcJs = new NgcJs();

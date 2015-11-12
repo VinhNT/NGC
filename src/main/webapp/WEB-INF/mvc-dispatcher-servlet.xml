@@ -20,11 +20,6 @@
     <mvc:resources mapping="/images/**" location="/images/" />
     <mvc:resources mapping="/js/**" location="/js/" />
     <mvc:annotation-driven />
-    <bean id="multipartResolver"
-        class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-        <!-- 25MB maximum -->
-        <property name="maxUploadSize" value="26214400" />
-    </bean>
     <import resource="classpath:servlet-context.xml" />
     <import resource="classpath:persistences-context.xml" />
 </beans>
