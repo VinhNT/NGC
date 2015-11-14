@@ -2,7 +2,7 @@ package nt.ngc.com.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@JsonIgnoreProperties({ "bytes" })
+@JsonIgnoreProperties({"bytes"})
 public class FileMeta {
 
     private String fileName;

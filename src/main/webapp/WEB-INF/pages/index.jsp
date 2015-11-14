@@ -2,7 +2,6 @@
 <html>
 <head>
 <title>Upload File for testing</title>
-<script src="<c:url value="js/vendor/ckeditor.js"/>"></script>
 </head>
 <body>
     <h3>Upload your file</h3>

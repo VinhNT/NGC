@@ -9,5 +9,6 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import nt.ngc.com.model.FileMeta;
 
 public interface FileService {
-    LinkedList<FileMeta> upLoadFile(MultipartHttpServletRequest request, HttpServletResponse response);
+    LinkedList<FileMeta> upLoadFile(MultipartHttpServletRequest request,
+            HttpServletResponse response);
 }

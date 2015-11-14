@@ -20,12 +20,14 @@ public class FileController {
     private FileService fileService;
 
     @RequestMapping("files/upload")
-    public @ResponseBody LinkedList<FileMeta> upload(MultipartHttpServletRequest request, HttpServletResponse response) {
+    public @ResponseBody LinkedList<FileMeta> upload(MultipartHttpServletRequest request,
+            HttpServletResponse response) {
         return fileService.upLoadFile(request, response);
     }
 
     @RequestMapping("secured/files/upload")
-    public @ResponseBody LinkedList<FileMeta> securedUpload(MultipartHttpServletRequest request, HttpServletResponse response) {
+    public @ResponseBody LinkedList<FileMeta> securedUpload(MultipartHttpServletRequest request,
+            HttpServletResponse response) {
         return fileService.upLoadFile(request, response);
     }
 

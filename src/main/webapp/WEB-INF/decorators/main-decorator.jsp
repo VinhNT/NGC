@@ -20,6 +20,7 @@
     <script src="<c:url value="js/vendor/bootstrap.file-input.js"/>"></script>
     <script src="<c:url value="js/vendor/jquery-ui.js"/>"></script>
     <script src="<c:url value="js/vendor/jquery.fileupload.js"/>"></script>
+    <script src="<c:url value="js/vendor/ckeditor.js"/>"></script>
     <!-- WebSite JS -->
     <script src="<c:url value="js/ngc.js"/>"></script>
     <script src="<c:url value="js/utils.js"/>"></script>
