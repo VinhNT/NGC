@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import nt.ngc.com.model.FileMeta;
 import nt.ngc.com.service.FileService;
+import nt.ngc.com.utils.Utils;
 
 @Component
 public class FileServiceImpl implements FileService {
@@ -26,6 +27,8 @@ public class FileServiceImpl implements FileService {
     public LinkedList<FileMeta> upLoadFile(MultipartHttpServletRequest request,
             HttpServletResponse response) {
         LinkedList<FileMeta> files = new LinkedList<FileMeta>();
+        String fileId = Utils.generateBase64IdFromTimeStamps();
+
         FileMeta fileMeta = null;
         // 1. build an iterator
         Iterator<String> itr = request.getFileNames();
@@ -33,6 +36,7 @@ public class FileServiceImpl implements FileService {
         // 2. get each file
         while (itr.hasNext()) {
             // 2.1 get next MultipartFile
+
             mpf = request.getFile(itr.next());
             // 2.3 create new fileMeta
             fileMeta = new FileMeta();
