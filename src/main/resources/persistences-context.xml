@@ -1,33 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans:beans xmlns:beans="http://www.springframework.org/schema/beans"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/data/jpa"
-    xsi:schemaLocation="http://www.springframework.org/schema/beans
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+    xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
     http://www.springframework.org/schema/beans/spring-beans.xsd
-    http://www.springframework.org/schema/data/jpa
-    http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+    http://www.springframework.org/schema/data/jpa 
+    http://www.springframework.org/schema/data/jpa/spring-jpa-1.0.xsd
+    http://www.springframework.org/schema/tx 
+    http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+    http://www.springframework.org/schema/context 
+    http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
- <repositories base-package="com.acme.repositories" />
-    <beans:bean id="dataSource"
-        class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+    <!-- Configure the data source bean -->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="${hibernate.driver.class}" />
         <property name="url" value="${hibernate.connection.url}" />
         <property name="username" value="${hibernate.login.username}" />
         <property name="password" value="${hibernate.login.password}" />
-    </beans:bean>
-
-    <beans:bean id="jpaVendorAdapter"
-        class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+    </bean>
+    <!-- Create default configuration for Hibernate -->
+    <bean id="hibernateJpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
         <property name="showSql" value="${hibernate.debug.showSQL}" />
         <property name="generateDdl" value="${hibernate.debug.generateDdl}" />
         <property name="database" value="${hibernate.db.name}" />
-    </beans:bean>
+    </bean>
 
-    <beans:bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager" />
-    <beans:bean id="entityManagerFactory"
-        class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+    <!-- Configure the entity manager factory bean -->
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="dataSource" />
-        <property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
-        <!-- spring based scanning for entity classes -->
+        <property name="jpaVendorAdapter" ref="hibernateJpaVendorAdapter" />
+        <!-- Set base package of your entities -->
         <property name="packagesToScan" value="nt.ngc.com.entities" />
-    </beans:bean>
-</beans:beans>
+        <!-- Set share cache mode -->
+        <property name="sharedCacheMode" value="ENABLE_SELECTIVE" />
+        <!-- Set validation mode -->
+        <property name="validationMode" value="NONE" />
+    </bean>
+
+    <!-- Configure the transaction manager bean -->
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
+    </bean>
+    <!-- Enable annotation driven transaction management -->
+    <tx:annotation-driven />
+    <!-- Configure Spring Data JPA and set the base package of the repository interfaces -->
+    <jpa:repositories base-package="nt.ngc.com.repositories" />
+</beans>

@@ -13,9 +13,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import nt.ngc.com.dao.BinaryFileRepository;
 import nt.ngc.com.entities.BinaryFile;
 import nt.ngc.com.model.FileMeta;
+import nt.ngc.com.repositories.BinaryFileRepository;
 import nt.ngc.com.service.FileService;
 import nt.ngc.com.utils.Utils;
 
