@@ -1,32 +1,33 @@
-<beans xmlns="http://www.springframework.org/schema/beans"
-    xmlns:jpa="http://www.springframework.org/schema/data/jpa"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-            http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns:beans="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/data/jpa"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/data/jpa
+    http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
-    <jpa:repositories base-package="nt.ngc.com.dao" />
-
-    <bean id="dataSource"
+ <repositories base-package="com.acme.repositories" />
+    <beans:bean id="dataSource"
         class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="${hibernate.driver.class}" />
         <property name="url" value="${hibernate.connection.url}" />
         <property name="username" value="${hibernate.login.username}" />
         <property name="password" value="${hibernate.login.password}" />
-    </bean>
+    </beans:bean>
 
-    <bean id="jpaVendorAdapter"
+    <beans:bean id="jpaVendorAdapter"
         class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
         <property name="showSql" value="${hibernate.debug.showSQL}" />
         <property name="generateDdl" value="${hibernate.debug.generateDdl}" />
         <property name="database" value="${hibernate.db.name}" />
-    </bean>
+    </beans:bean>
 
-    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager" />
-    <bean id="entityManagerFactory"
+    <beans:bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager" />
+    <beans:bean id="entityManagerFactory"
         class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="dataSource" />
         <property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
         <!-- spring based scanning for entity classes -->
         <property name="packagesToScan" value="nt.ngc.com.entities" />
-    </bean>
-</beans>
+    </beans:bean>
+</beans:beans>

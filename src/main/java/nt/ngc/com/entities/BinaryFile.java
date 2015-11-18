@@ -44,6 +44,11 @@ public class BinaryFile implements Serializable {
     private String uploader;
 
     public BinaryFile() {
+
+    }
+
+    public BinaryFile(String id) {
+        this.id = id;
     }
 
     public byte[] getBinarydata() {

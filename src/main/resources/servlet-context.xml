@@ -8,8 +8,6 @@
         http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd
         http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 
-    <import resource="classpath:META-INF/cxf/cxf.xml" />
-    <import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
     <context:component-scan base-package="nt.ngc.com" />
     <context:annotation-config />
     <context:property-placeholder location="classpath:hibernate.properties" order="1" ignore-unresolvable="true"/>

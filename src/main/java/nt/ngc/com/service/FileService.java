@@ -10,5 +10,5 @@ import nt.ngc.com.model.FileMeta;
 
 public interface FileService {
     LinkedList<FileMeta> upLoadFile(MultipartHttpServletRequest request,
-            HttpServletResponse response);
+            HttpServletResponse response, String userName);
 }
