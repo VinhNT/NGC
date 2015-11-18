@@ -21,7 +21,7 @@
     <bean id="hibernateJpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
         <property name="showSql" value="${hibernate.debug.showSQL}" />
         <property name="generateDdl" value="${hibernate.debug.generateDdl}" />
-        <property name="database" value="${hibernate.db.name}" />
+        <property name="databasePlatform" value="${hibernate.dialect.name}"/>
     </bean>
 
     <!-- Configure the entity manager factory bean -->
@@ -44,4 +44,5 @@
     <tx:annotation-driven />
     <!-- Configure Spring Data JPA and set the base package of the repository interfaces -->
     <jpa:repositories base-package="nt.ngc.com.repositories" />
+
 </beans>
