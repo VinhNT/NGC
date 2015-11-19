@@ -3,6 +3,7 @@ package nt.ngc.com.entities;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Lob;
@@ -11,10 +12,6 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-/**
- * The persistent class for the images database table.
- * 
- */
 @Entity
 @Table(
         name = "binaryfiles")
@@ -23,20 +20,38 @@ import javax.persistence.TemporalType;
 public class BinaryFile implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @Lob
-    private byte[] binarydata;
-
-    private String binarytype;
-
     @Id
     private String id;
 
-    private int orginalwidth;
+    @Lob
+    @Column(
+            name = "binary_data")
+    private byte[] binaryData;
 
-    private int originalheight;
+    @Column(
+            name = "binary_type")
+    private String binaryType;
+
+    @Column(
+            name = "mime_types")
+    private String mimeTypes;
+
+    @Column(
+            name = "orginal_width")
+    private int orginalWidth;
+
+    @Column(
+            name = "original_file_name")
+    private String originalFileName;
+
+    @Column(
+            name = "original_height")
+    private int originalHeight;
 
     @Lob
-    private byte[] thumbnaildata;
+    @Column(
+            name = "thumbnail_data")
+    private byte[] thumbnailData;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date timestamp;
@@ -44,27 +59,6 @@ public class BinaryFile implements Serializable {
     private String uploader;
 
     public BinaryFile() {
-
-    }
-
-    public BinaryFile(String id) {
-        this.id = id;
-    }
-
-    public byte[] getBinarydata() {
-        return this.binarydata;
-    }
-
-    public void setBinarydata(byte[] binarydata) {
-        this.binarydata = binarydata;
-    }
-
-    public String getBinarytype() {
-        return this.binarytype;
-    }
-
-    public void setBinarytype(String binarytype) {
-        this.binarytype = binarytype;
     }
 
     public String getId() {
@@ -75,28 +69,60 @@ public class BinaryFile implements Serializable {
         this.id = id;
     }
 
-    public int getOrginalwidth() {
-        return this.orginalwidth;
+    public byte[] getBinaryData() {
+        return this.binaryData;
     }
 
-    public void setOrginalwidth(int orginalwidth) {
-        this.orginalwidth = orginalwidth;
+    public void setBinaryData(byte[] binaryData) {
+        this.binaryData = binaryData;
     }
 
-    public int getOriginalheight() {
-        return this.originalheight;
+    public String getBinaryType() {
+        return this.binaryType;
     }
 
-    public void setOriginalheight(int originalheight) {
-        this.originalheight = originalheight;
+    public void setBinaryType(String binaryType) {
+        this.binaryType = binaryType;
     }
 
-    public byte[] getThumbnaildata() {
-        return this.thumbnaildata;
+    public String getMimeTypes() {
+        return this.mimeTypes;
     }
 
-    public void setThumbnaildata(byte[] thumbnaildata) {
-        this.thumbnaildata = thumbnaildata;
+    public void setMimeTypes(String mimeTypes) {
+        this.mimeTypes = mimeTypes;
+    }
+
+    public int getOrginalWidth() {
+        return this.orginalWidth;
+    }
+
+    public void setOrginalWidth(int orginalWidth) {
+        this.orginalWidth = orginalWidth;
+    }
+
+    public String getOriginalFileName() {
+        return this.originalFileName;
+    }
+
+    public void setOriginalFileName(String originalFileName) {
+        this.originalFileName = originalFileName;
+    }
+
+    public int getOriginalHeight() {
+        return this.originalHeight;
+    }
+
+    public void setOriginalHeight(int originalHeight) {
+        this.originalHeight = originalHeight;
+    }
+
+    public byte[] getThumbnailData() {
+        return this.thumbnailData;
+    }
+
+    public void setThumbnailData(byte[] thumbnailData) {
+        this.thumbnailData = thumbnailData;
     }
 
     public Date getTimestamp() {
