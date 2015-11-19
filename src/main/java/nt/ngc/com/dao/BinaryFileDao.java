@@ -1,10 +1,7 @@
 package nt.ngc.com.dao;
 
-import javax.persistence.EntityManager;
+import org.springframework.stereotype.Component;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
+@Component
 public class BinaryFileDao {
-    @Autowired
-    EntityManager entityManager;
 }
