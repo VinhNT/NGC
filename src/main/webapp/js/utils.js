@@ -23,6 +23,6 @@ function initUploadFile(inputSelector) {
         });
 }
 
-function initCKEditor(inputName) {
-    CKEDITOR.replace(inputName);
+function initCKEditor(inputName, uploadURL) {
+    CKEDITOR.replace(inputName, {filebrowserUploadUrl: uploadURL});
 }

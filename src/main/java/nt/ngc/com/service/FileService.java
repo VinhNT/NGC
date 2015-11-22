@@ -10,8 +10,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import nt.ngc.com.model.FileMeta;
 
 public interface FileService {
-    LinkedList<FileMeta> upLoadFile(MultipartHttpServletRequest request,
-            HttpServletResponse response, String userName);
 
+    LinkedList<FileMeta> upLoadFile(MultipartHttpServletRequest request, String userName);
     void downLoadFile(String fileId, String fileName, HttpServletResponse response) throws IOException;
 }

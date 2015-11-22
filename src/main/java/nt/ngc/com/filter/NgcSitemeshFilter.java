@@ -10,6 +10,7 @@ public class NgcSitemeshFilter extends ConfigurableSiteMeshFilter {
         // Map default decorator. This shall be applied to all paths if no other paths match.
         builder.addDecoratorPath("/*", "/WEB-INF/decorators/main-decorator.jsp");
         builder.addExcludedPath("/ajax**");
+        builder.addExcludedPath("/files**");
     }
 
 }

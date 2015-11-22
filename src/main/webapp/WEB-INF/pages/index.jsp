@@ -12,7 +12,7 @@
 <script>
     $(document).ready(function() {
         initUploadFile('#fileupload');
-        initCKEditor('editor1');
+        initCKEditor('editor1', '<c:url value="files/ckEditorUpload"/>');
     });
 </script>
 </body>

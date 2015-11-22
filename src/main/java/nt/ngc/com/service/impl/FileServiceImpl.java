@@ -38,7 +38,7 @@ public class FileServiceImpl implements FileService {
     private String fileDownLoadString = "/files/%s/%s";
 
     @Override
-    public LinkedList<FileMeta> upLoadFile(MultipartHttpServletRequest request, HttpServletResponse response, String userName) {
+    public LinkedList<FileMeta> upLoadFile(MultipartHttpServletRequest request, String userName) {
         LinkedList<FileMeta> files = new LinkedList<FileMeta>();
         String fileId;
         boolean isExisting;
