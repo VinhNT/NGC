@@ -67,9 +67,9 @@ public class FileServiceImpl implements FileService {
             fileMeta.setUploaded(true);
             try {
                 binaryFile.setBinaryData(mpf.getBytes());
-                binaryFile.setMimeTypes(MimeTypes.getContentType(mpf.getBytes()));
+                binaryFile.setMimeType(MimeTypes.getContentType(mpf.getBytes()));
                 binaryFile.setOriginalFileName(mpf.getOriginalFilename());
-                
+
                 fileMeta.setFileDownLoadUrl(String.format(fileDownLoadString, fileId, binaryFile.getOriginalFileName()));
                 // bfRepository.
                 bfRepository.save(binaryFile);
@@ -95,7 +95,7 @@ public class FileServiceImpl implements FileService {
         } else if (!fileName.equalsIgnoreCase(binaryFile.getOriginalFileName())) {
             throw new ResourceNotFoundException();
         }
-        response.setContentType(binaryFile.getMimeTypes());
+        response.setContentType(binaryFile.getMimeType());
         response.setHeader("Content-Disposition", "attachment;filename=" + binaryFile.getOriginalFileName());
         response.getOutputStream().write(binaryFile.getBinaryData());
     }

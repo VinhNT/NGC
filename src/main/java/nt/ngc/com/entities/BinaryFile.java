@@ -14,7 +14,7 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(
-        name = "binaryfiles")
+        name = "binary_files")
 @NamedQuery(
         name = "BinaryFile.findAll", query = "SELECT b FROM BinaryFile b")
 public class BinaryFile implements Serializable {
@@ -33,8 +33,8 @@ public class BinaryFile implements Serializable {
     private String binaryType;
 
     @Column(
-            name = "mime_types")
-    private String mimeTypes;
+            name = "mime_type")
+    private String mimeType;
 
     @Column(
             name = "orginal_width")
@@ -85,12 +85,12 @@ public class BinaryFile implements Serializable {
         this.binaryType = binaryType;
     }
 
-    public String getMimeTypes() {
-        return this.mimeTypes;
+    public String getMimeType() {
+        return this.mimeType;
     }
 
-    public void setMimeTypes(String mimeTypes) {
-        this.mimeTypes = mimeTypes;
+    public void setMimeType(String mimeType) {
+        this.mimeType = mimeType;
     }
 
     public int getOrginalWidth() {
