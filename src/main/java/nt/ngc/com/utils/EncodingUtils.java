@@ -1,6 +1,7 @@
 package nt.ngc.com.utils;
 
 import java.math.BigInteger;
+import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -43,24 +44,6 @@ public class EncodingUtils {
     }
 
     protected static char[] dictionary = DICTIONARY_32;
-
-    // /**
-    // * tester method.
-    // */
-    // public static void main(String[] args) {
-    // String original = "123456789012345678901234567890";
-    // System.out.println("Original: " + original);
-    // BaseX bx = new BaseX(DICTIONARY_62);
-    // String encoded = bx.encode(new BigInteger(original));
-    // System.out.println("encoded: " + encoded);
-    // BigInteger decoded = bx.decode(encoded);
-    // System.out.println("decoded: " + decoded);
-    // if (original.equals(decoded.toString())) {
-    // System.out.println("Passed! decoded value is the same as the original.");
-    // } else {
-    // System.err.println("FAILED! decoded value is NOT the same as the original!!");
-    // }
-    // }
 
     /**
      * decodes the given string from the base of the dictionary provided in the constructor.
@@ -139,5 +122,11 @@ public class EncodingUtils {
             sb.append(result.get(i));
         }
         return sb.toString();
+    }
+
+    public static String stripAccents(String s) {
+        s = Normalizer.normalize(s, Normalizer.Form.NFD);
+        s = s.replaceAll("[\\p{InCombiningDiacriticalMarks}]", "");
+        return s;
     }
 }
