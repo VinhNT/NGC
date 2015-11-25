@@ -10,11 +10,12 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import nt.ngc.com.dao.BinaryFileDao;
+import nt.ngc.com.dao.impl.BinaryFileDao;
 import nt.ngc.com.entities.BinaryFile;
 import nt.ngc.com.exceptions.ResourceNotFoundException;
 import nt.ngc.com.model.FileMeta;
@@ -24,6 +25,7 @@ import nt.ngc.com.utils.EncodingUtils;
 import nt.ngc.com.utils.MimeTypes;
 
 @Component
+@Transactional
 public class FileServiceImpl implements FileService {
 
     @Value("${uploadfile.savedfolder}")
@@ -69,10 +71,8 @@ public class FileServiceImpl implements FileService {
                 binaryFile.setBinaryData(mpf.getBytes());
                 binaryFile.setMimeType(MimeTypes.getContentType(mpf.getBytes()));
                 binaryFile.setOriginalFileName(mpf.getOriginalFilename());
-
                 fileMeta.setFileDownLoadUrl(String.format(fileDownLoadString, fileId, binaryFile.getOriginalFileName()));
-                // bfRepository.
-                bfRepository.save(binaryFile);
+                binaryFileDao.persist(binaryFile, true);
             } catch (IOException e) {
                 fileMeta.setUploaded(false);
                 fileMeta.setErrMessage(e.getMessage());

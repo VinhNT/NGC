@@ -43,6 +43,7 @@ public class FileController {
             result = String.format(ckUploadResponse, fNum, baseUrl + uploadedMeta.getFileDownLoadUrl(), "Success");
             return result;
         }
+
         return failedMessage;
     }
 
